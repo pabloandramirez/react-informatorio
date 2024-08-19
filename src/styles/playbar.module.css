@@ -1,24 +1,46 @@
 .playBar{
     display: flex;
     justify-content: space-between;
-    width: 100%;
     background-color: #282828;
-    position: absolute;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 5px 20px;
 }
 
 .reproductionBtns{
     display: flex;
     align-items: center;
+    gap: 20px;
 }
 
 .songPlaying{
     display: flex;
+    align-items: center;
+}
+
+.songCover{
+    width: 48px;
+    height: 48px;
 }
 
 .songContainer{
-    display: flex;
+    text-align: left;
+    margin: 0;
+    line-height: 0;
 }
 
 .songInfo{
     display: flex;
+    margin: 0;
+    line-height: 0;
+    align-items: center;
+    gap: 6px;
+}
+
+.playOptions{
+    display: flex;
+    align-items: center;
+    gap:20px
 }

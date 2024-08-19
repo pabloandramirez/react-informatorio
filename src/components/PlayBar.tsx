@@ -8,11 +8,11 @@ import volumeUp from '../assets/volume-up.svg';
 import arrowDropDown from '../assets/arrow-drop-down.svg';
 
 const SONG_PLAYING = {
-    imageUrl:'',
-    artist:'',
-    song:'',
-    reproductions:'',
-    likes:''
+    imageUrl:'https://lh3.googleusercontent.com/d/1kB-O9OVrf4t56e5oqAmRgGOyOzQf_GO3',
+    song:'Convida',
+    artist:'Tiger Mood',
+    reproductions:'15M',
+    likes:'750'
 }
 
 export default function PlayBar(){
@@ -31,11 +31,11 @@ export default function PlayBar(){
                 <p className={styles.reproductionTime}>1:24 / 2:50</p>
             </div>
             <div className={styles.songPlaying}>
-                <img src={SONG_PLAYING.imageUrl} alt="song_image" />
+                <img className={styles.songCover} src={SONG_PLAYING.imageUrl} alt="song_image" />
                 <div className={styles.songContainer}>
                     <p className={styles.songTitle}>Listen Again</p>
                     <div className={styles.songInfo}>
-                        <p>{SONG_PLAYING.artist}</p> - <p>{SONG_PLAYING.artist}</p>
+                        <p>{SONG_PLAYING.artist}</p> - <p>{SONG_PLAYING.song}</p>
                         <img src={separator} alt="separator" />
                         <p>{SONG_PLAYING.reproductions} reproductions</p>
                         <img src={separator} alt="separator" />
