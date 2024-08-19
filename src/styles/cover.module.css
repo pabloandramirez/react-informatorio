@@ -1,0 +1,90 @@
+/*Playlist Covers*/
+
+.playlist{
+    display: grid;
+}
+
+.imageContainerPlaylist{
+    width: fit-content;
+    display: grid;
+    justify-items: flex-end;
+}
+
+.moreVertical{
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    margin: 5px 5px auto auto;
+}
+
+.playBtn{
+    position: absolute;
+    margin: auto 5px 5px auto;
+    align-self: end;
+}
+
+.imagePlaylist{
+    width: 170px;
+    height: 170px;
+    overflow-x: hidden;
+}
+.titlePlaylist{
+    margin: 0 auto 0 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.artistPlaylist{
+    margin: 0 auto 0 0;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+
+/*Song Covers*/
+
+.song{
+    display: flex;
+}
+
+
+.imageSong{
+    width: 48px;
+    height: 48px;
+    overflow-x: hidden;
+    margin-right: 10px;
+}
+.titleSong{
+    margin: 0 auto 0 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.artistSong{
+    margin: 0 auto 0 0;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.text{
+    text-align: left;
+}
+
+/*Reccomended Covers*/
+.imageRecommended{
+    width: 210px;
+    height: 210px;
+    overflow-x: hidden;
+    margin-right: 10px;
+}
+
+/*Similar To*/
+.imageSimilar{
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+}
+
+.textSimilar{
+    text-align: center;
+}

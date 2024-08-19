@@ -1,0 +1,14 @@
+.quickPickSection{
+    margin: 30px 50px 50px;
+}
+
+.topSection{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.generalSection{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
