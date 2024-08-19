@@ -4,6 +4,7 @@ import ListenAgain from './components/ListenAgain'
 import QuickPicks from './components/QuickPicks'
 import RecommendedAlbums from './components/RecommendedAlbums'
 import SimilarTo from './components/SimilarTo'
+import PlayBar from './components/PlayBar'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
       <QuickPicks/>
       <RecommendedAlbums/>
       <SimilarTo/>
+      <PlayBar/>
     </>
   )
 }

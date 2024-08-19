@@ -1,0 +1,24 @@
+.playBar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #282828;
+    position: absolute;
+}
+
+.reproductionBtns{
+    display: flex;
+    align-items: center;
+}
+
+.songPlaying{
+    display: flex;
+}
+
+.songContainer{
+    display: flex;
+}
+
+.songInfo{
+    display: flex;
+}
