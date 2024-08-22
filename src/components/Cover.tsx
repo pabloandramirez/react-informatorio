@@ -6,7 +6,7 @@ type Props = {
     imageUrl: string;
     title: string;
     artist: string;
-    styleType: string;
+    styleType: StyleType;
 }
 
 type StyleType = 'playlist' | 'recommended' | 'similar' | 'quickpick';
@@ -34,9 +34,9 @@ const styleImageMap: { [key in StyleType]?: string } = {
 };
 
 export default function Cover({imageUrl, title, artist, styleType} : Props){
-    const coverStyle: string = styleMap[styleType as StyleType] || cover.song;
-    const coverImageContainerStyle: string = styleImageContainerMap[styleType as StyleType] || cover.imageContainerSong;
-    const coverImageStyle: string = styleImageMap[styleType as StyleType] || cover.imageSong;
+    const coverStyle: string = styleMap[styleType] || cover.song;
+    const coverImageContainerStyle: string = styleImageContainerMap[styleType] || cover.imageContainerSong;
+    const coverImageStyle: string = styleImageMap[styleType] || cover.imageSong;
     return(
         <div className={coverStyle}>
             <div className={coverImageContainerStyle}>
