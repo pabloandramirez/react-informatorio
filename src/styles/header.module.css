@@ -1,0 +1,10 @@
+.header{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.leftGroup{
+    display: flex;
+    justify-self: left;
+    gap: 10rem;
+}

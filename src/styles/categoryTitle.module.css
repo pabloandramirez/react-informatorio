@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Sans+3:wght@600&display=swap');
+
+.categoryGroup{
+    display: flex;
+    justify-content: center;
+    max-height: 3rem;
+    gap: 10px;
+}
+
+.text{
+    text-align: start;
+}
+
+.description{
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    margin: auto;
+}
+
+.title{
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    margin: auto;
+}
