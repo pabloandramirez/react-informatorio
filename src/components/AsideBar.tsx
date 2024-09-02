@@ -1,4 +1,4 @@
-import { Dispatch } from 'react';
+import { Dispatch, useState } from 'react';
 import PeopleIcon from '../assets/people.svg';
 import styles from '../styles/asideBar.module.css';
 import Cover from './Cover';
@@ -16,19 +16,26 @@ type ShowHomeProps = {
 
 export default function AsideBar({setShowHome, playLists} : ShowHomeProps){
 
-    function handleClick(){
+    const [isClickedHome, setIsClickedHome] = useState(true);
+    const [isClickedPlaylist, setIsClickedPlaylist] = useState(false);
+
+    function handleClickPlaylist(){
         setShowHome(false);
+        setIsClickedPlaylist(true);
+        setIsClickedHome(false);
     }
 
     function handleClickHome(){
         setShowHome(true);
+        setIsClickedHome(true);
+        setIsClickedPlaylist(false);
     }
 
     return(
         <aside className={styles.asideBar}>
-            <button className={styles.buttonSidebar} onClick={handleClickHome}><img src={PeopleIcon} alt="people" />Home</button>
+            <button style={{backgroundColor: isClickedHome ? '#1a1a1a' : '#1010'}} className={styles.buttonSidebar} onClick={handleClickHome}><img src={PeopleIcon} alt="people" />Home</button>
             <hr className={styles.breakLine} />
-            <button className={styles.buttonSidebar} onClick={handleClick}><img src={PeopleIcon} alt="people" />New Playlist</button>
+            <button style={{backgroundColor: isClickedPlaylist ? '#1a1a1a' : '#1010'}} className={styles.buttonSidebar} onClick={handleClickPlaylist}><img src={PeopleIcon} alt="people" />New Playlist</button>
             {playLists.map((cover) => {
                 return(
                     <Cover key={cover.imageUrl} imageUrl={cover.imageUrl} title={cover.title} 

@@ -17,6 +17,7 @@ export default function CreatePlayList({setPlayLists, playLists} : CreatePlaylis
     const [imageUrl, setImageUrl] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    
 
 
     function handleTitleChange(event: ChangeEvent<HTMLInputElement>){
@@ -60,7 +61,11 @@ export default function CreatePlayList({setPlayLists, playLists} : CreatePlaylis
                 </form>
             </div>
             <div className={styles.vistaPrevia}>
-                <img className={styles.imagenPrevia} src={imageUrl?imageUrl:"https://lh3.googleusercontent.com/d/1Jjrtu51P19Wt7f8DNh2yVPahVQvkX5-_"} alt="vistaPrevia" />
+                <img 
+                className={styles.imagenPrevia} 
+                src={imageUrl?imageUrl:"https://lh3.googleusercontent.com/d/1Jjrtu51P19Wt7f8DNh2yVPahVQvkX5-_"} 
+                alt="vistaPrevia" 
+                />
                 <h2 className={styles.tituloVistaPrevia}>{title?title:'Título'}</h2>
                 <h3 className={styles.descripcionVistaPrevia}>{description?description:'Descripción'}</h3>
             </div>
