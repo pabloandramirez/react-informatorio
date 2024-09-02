@@ -17,6 +17,11 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.mainContent{
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
