@@ -16,7 +16,7 @@ const styleMap: { [key in StyleType]?: string } = {
     playlist: cover.playlist,
     recommended: cover.playlist,
     similar: cover.playlist,
-    quickpick: cover.playlist
+    quickpick: cover.quickpick
 };
 
 const styleImageContainerMap: { [key in StyleType]?: string } = {

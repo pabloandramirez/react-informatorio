@@ -1,0 +1,38 @@
+.createPlaylist{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.formularioContainer{
+    margin-left: 40px;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+}
+
+.vistaPrevia{
+    margin: 5rem;
+}
+
+.vistaPrevia > *{
+    margin: 0;
+}
+
+.inputForm{
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.btnAgregar{
+    border-radius: 51px;
+    width: fit-content;
+    margin: 20px auto;
+}
+
+.imagenPrevia{
+    width: 15rem;
+}

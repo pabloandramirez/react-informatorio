@@ -97,7 +97,7 @@ export default function QuickPicks(){
                 {SONGS.map((song) => {
                     return(
                         <Cover key={song.imageUrl} imageUrl={song.imageUrl} title={song.title} 
-                        artist={song.artist} styleType={'quickpik'}/>
+                        artist={song.artist} styleType={'quickpick'}/>
                     )
                 })}
             </div>

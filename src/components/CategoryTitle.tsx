@@ -11,8 +11,8 @@ export default function CategoryTitle({description, title}: Props){
         <div className={styles.categoryGroup}>
             <Profile/>
             <div className={styles.text}>
-                {description ?? <h3 className={styles.description}>{description}</h3>}
-                {title ?? <h2 className={styles.title}>{title}</h2>}
+                {description ? <h3 className={styles.description}>{description}</h3> : null}
+                {title ? <h2 className={styles.title}>{title}</h2> : null}
             </div>
         </div>
     )
