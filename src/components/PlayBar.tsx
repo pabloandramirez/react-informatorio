@@ -6,6 +6,7 @@ import repeatSong from '../assets/repeat-song.svg';
 import volumeUp from '../assets/volume-up.svg';
 import arrowDropDown from '../assets/arrow-drop-down.svg';
 import pauseBtn from '../assets/pause-btn.svg';
+import { useAudio } from './hooks/useAudio';
 
 
 type ReprodProps = {
@@ -18,11 +19,22 @@ type ReprodProps = {
     imageLogo: string;
 }
 
-export default function PlayBar( {isPlaying, setIsPlaying, audioMinutes, audioSeconds, title, description, imageLogo }: ReprodProps){
+export default function PlayBar( {isPlaying, setIsPlaying, audioMinutes, audioSeconds, title, 
+    description, imageLogo }: ReprodProps){
+
+    const { activeAudio } = useAudio();
 
     const handlClickPlay = (e: React.MouseEvent<HTMLAnchorElement>)=>{
         e.preventDefault();
         setIsPlaying(!isPlaying);
+
+        if (activeAudio?.paused) {
+            activeAudio.play();
+            setIsPlaying(true);
+        } else {
+            activeAudio?.pause();
+            setIsPlaying(false);
+        }
     }
 
     const shortTitle = title.slice(0,20)+'...';

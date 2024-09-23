@@ -16,7 +16,7 @@ export default function useFetchData(url: string){
           .catch(() => {
             setError('Hubo un error');
           });
-      }, []);
+      }, [url]);
 
     return { audios, isLoaded, error };
 }

@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import PlayBar from './components/PlayBar';
 import CreatePlayList from './components/CreatePlayList';
+import { AudioProvider } from './components/hooks/useAudio';
 
 function App() {
 
@@ -23,13 +24,15 @@ function App() {
   return (
     <>
       <Header />
-      <div className={stylesApp.mainContent}>
-        <AsideBar playLists={playLists} setShowHome={setShowHome}/>
-        {showHome ? <Home setIsPlaying={setIsPlaying} setAudioLength={setAudioLength} setTitle={setTitle} 
-        setDescription={setDescription} setImageLogo={setImageLogo}/> : <CreatePlayList playLists={playLists} setPlayLists={setPlayLists}/>}
-      </div>
-      <PlayBar isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioMinutes={minutes} audioSeconds={seconds}
-       title={title} description={description} imageLogo={imageLogo} />
+      <AudioProvider>
+        <div className={stylesApp.mainContent}>
+          <AsideBar playLists={playLists} setShowHome={setShowHome}/>
+          {showHome ? <Home setIsPlaying={setIsPlaying} setAudioLength={setAudioLength} setTitle={setTitle} 
+          setDescription={setDescription} setImageLogo={setImageLogo}/> : <CreatePlayList playLists={playLists} setPlayLists={setPlayLists}/>}
+        </div>
+        <PlayBar isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioMinutes={minutes} audioSeconds={seconds}
+        title={title} description={description} imageLogo={imageLogo} />
+       </AudioProvider>
     </>
   )
 }
