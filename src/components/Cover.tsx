@@ -81,7 +81,7 @@ export default function Cover({id, logoImage, title, description, styleType, hig
 
     return(
         <div key={id} className={coverStyle}>
-            <div className={coverImageContainerStyle}>
+            <div style={{border:'none'}} className={coverImageContainerStyle}>
                 {styleType==='playlist'?
                 (<><a className={cover.moreVertical} href="#">
                     <img src={moreVertical} alt="more-vertical" />
@@ -90,7 +90,10 @@ export default function Cover({id, logoImage, title, description, styleType, hig
                     <img src={playBtn} alt="play-btn" />
                     <audio ref={audioRef} src={highMp3}/>
                 </a></>):null}
-                <img className={coverImageStyle} src={logoImage} alt="song-cover"/> 
+                <a href='#' onClick={handlePlayPause}>
+                    <img className={coverImageStyle} src={logoImage} alt="song-cover"/>
+                    <audio ref={audioRef} src={highMp3}/>
+                </a>
             </div>
             <div className={styleType === 'similar' ? cover.textSimilar : cover.text}>
                 <h3 title={title} className={styleType==='playlist' ||styleType==='recommended' ? cover.titlePlaylist : cover.titleSong}>{shortTitle}</h3>

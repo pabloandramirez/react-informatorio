@@ -45,7 +45,7 @@ export default function RecommendedAlbums({audios, delegated} : AudiosProps){
                 <NavegationArrows/>
             </div>
             <div className={styles.generalSection}>
-                {audios.slice(0,5).map((audio: AudioProps) => {
+                {audios.slice(10,15).map((audio: AudioProps) => {
                     return(
                         <Cover key={audio.id} logoImage={audio.channel.urls.logo_image.original} 
                         title={audio.title} description={audio.description} styleType={'playlist'} 
