@@ -36,10 +36,10 @@ export default function AsideBar({setShowHome, playLists} : ShowHomeProps){
             <button style={{backgroundColor: isClickedHome ? '#1a1a1a' : '#1010'}} className={styles.buttonSidebar} onClick={handleClickHome}><img src={PeopleIcon} alt="people" />Home</button>
             <hr className={styles.breakLine} />
             <button style={{backgroundColor: isClickedPlaylist ? '#1a1a1a' : '#1010'}} className={styles.buttonSidebar} onClick={handleClickPlaylist}><img src={PeopleIcon} alt="people" />New Playlist</button>
-            {playLists.map((cover) => {
+            {playLists.map((cover, id) => {
                 return(
-                    <Cover key={cover.imageUrl} imageUrl={cover.imageUrl} title={cover.title} 
-                        artist={cover.description} styleType={'quickpick'}/>
+                    <Cover key={cover.imageUrl} title={cover.title}
+                    styleType={'quickpick'} id={id+''} logoImage={cover.imageUrl} description={cover.description} highMp3={''} delegated={undefined} duration={0}/>
                 )
             })}
         </aside>
