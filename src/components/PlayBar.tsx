@@ -7,6 +7,7 @@ import volumeUp from '../assets/volume-up.svg';
 import arrowDropDown from '../assets/arrow-drop-down.svg';
 import pauseBtn from '../assets/pause-btn.svg';
 import { useAudio } from './hooks/useAudio';
+import logo from '../assets/youtube-music.svg';
 
 
 type ReprodProps = {
@@ -37,7 +38,7 @@ export default function PlayBar( {isPlaying, setIsPlaying, audioMinutes, audioSe
         }
     }
 
-    const shortTitle = title.slice(0,20)+'...';
+    const shortTitle = title && title.slice(0,20)+'...';
     const shortDescription = description && description.slice(0, 30)+'...';
 
     return(
@@ -55,11 +56,11 @@ export default function PlayBar( {isPlaying, setIsPlaying, audioMinutes, audioSe
                 <p className={styles.reproductionTime}>0:00 / {audioMinutes}:{audioSeconds}</p>
             </div>
             <div className={styles.songPlaying}>
-                <img className={styles.songCover} src={imageLogo} alt="song_image" />
+                <img className={styles.songCover} src={imageLogo?imageLogo:logo} alt="song_image" />
                 <div className={styles.songContainer}>
-                    <p className={styles.songTitle}>{shortTitle}</p>
+                    <p className={styles.songTitle}>{shortTitle?shortTitle:'Title'}</p>
                     <div className={styles.songInfo}>
-                        <p>{shortDescription}</p>
+                        <p>{shortDescription?shortDescription:'Description'}</p>
                     </div>
                 </div>
             </div>
