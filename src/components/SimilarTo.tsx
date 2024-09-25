@@ -37,16 +37,14 @@ type LogoImage = {
 
 export default function SimilarTo({audios, delegated} : AudiosProps){
 
-    const audiosFilter = audios.filter(audio=> audio.category_id === 265??audio);
-
     return(
         <div className={styles.recommendedSection}>
             <div className={styles.topSection}>
-                <CategoryTitle description={'SIMILAR TO'} title={'News'} />
+                <CategoryTitle description={'SIMILAR TO'} title={'Football'} />
                 <NavegationArrows/>
             </div>
             <div className={styles.generalSection}>
-                {audiosFilter.slice(0,5).map((audio: AudioProps) => {
+                {audios.slice(0,5).map((audio: AudioProps) => {
                     return(
                         <Cover key={audio.id} logoImage={audio.channel.urls.logo_image.original} 
                         title={audio.title} description={audio.description} styleType={'similar'} 
