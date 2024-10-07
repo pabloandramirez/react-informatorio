@@ -1,48 +1,54 @@
+import { ComponentState } from 'react';
 import styles from '../styles/recommendedAlbums.module.css';
 import CategoryTitle from './CategoryTitle';
 import Cover from './Cover';
 import NavegationArrows from './NavegationArrows';
 
-const SIMILAR_TO = [
-    {
-        imageUrl:'https://lh3.googleusercontent.com/d/1lOByptkFa7tgLz6whdIb10J9hyslJltU',
-        artist:'Pappo',
-        suscribers:'1.5M suscribers'
-    },
-    {
-        imageUrl:'https://lh3.googleusercontent.com/d/1baaS0gOO0p0kSy5DcUctsLqDKRZ1R2df',
-        artist:'Sumo',
-        suscribers:'1.5M suscribers'
-    },
-    {
-        imageUrl:'https://lh3.googleusercontent.com/d/1YlKPgtR6oa72Pi4KSyGnDmJHGX8oGO5i',
-        artist:'Los Ratones Paranoicos',
-        suscribers:'1.5M'
-    },
-    {
-        imageUrl:'https://lh3.googleusercontent.com/d/1h5j_rj_56sXI8QynNS2WAgO49e0I7Tlt',
-        artist:'Catupecu Machu',
-        suscribers:'1.5M'
-    },
-    {
-        imageUrl:'https://lh3.googleusercontent.com/d/1SnhnU45_gRLz82zv9MZiekvGoSQGqNc1',
-        artist:'Los Piojos',
-        suscribers:'1.5M'
-    }
-];
 
-export default function SimilarTo(){
+type AudiosProps = {
+    audios: Array<AudioProps>;
+    delegated: ComponentState;
+}
+
+type AudioProps = {
+    id: string;
+    channel: Channel;
+    title: string;
+    description: string;
+    urls: Urls;
+    category_id: number;
+}
+
+type Urls = {
+    high_mp3 : string;
+}
+
+type Channel = {
+    urls : UrlsChannel;
+}
+
+type UrlsChannel = {
+    logo_image : LogoImage;
+}
+
+type LogoImage = {
+    original: string;
+}
+
+export default function SimilarTo({audios, delegated} : AudiosProps){
+
     return(
         <div className={styles.recommendedSection}>
             <div className={styles.topSection}>
-                <CategoryTitle description={'SIMILAR TO'} title={'Divididos'} />
+                <CategoryTitle description={'SIMILAR TO'} title={'Football'} />
                 <NavegationArrows/>
             </div>
             <div className={styles.generalSection}>
-                {SIMILAR_TO.map((artist) => {
+                {audios.slice(0,5).map((audio: AudioProps) => {
                     return(
-                        <Cover key={artist.imageUrl} imageUrl={artist.imageUrl} title={artist.artist} 
-                        artist={artist.suscribers} styleType={'similar'}/>
+                        <Cover key={audio.id} logoImage={audio.channel.urls.logo_image.original} 
+                        title={audio.title} description={audio.description} styleType={'similar'} 
+                        highMp3={audio.urls.high_mp3} id={audio.id} delegated={delegated} duration={0}/>
                     )
                 })}
             </div>
