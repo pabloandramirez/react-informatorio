@@ -1,5 +1,7 @@
 import { ChangeEvent, Dispatch, FormEvent, useState } from 'react';
 import styles from '../styles/createPlaylist.module.css';
+import TextInput from './TextInput';
+import Heading from './Heading';
 
 type Playlist = {
     imageUrl: string;
@@ -49,14 +51,16 @@ export default function CreatePlayList({setPlayLists, playLists} : CreatePlaylis
     return(
         <div className={styles.createPlaylist}>
             <div className={styles.formularioContainer}>
-                <h3>Creá tu Playlist</h3>
+                <Heading as={'h3'}>Creá tu Playlist</Heading>
                 <form onSubmit={handleSubmit} className={styles.formulario}>
-                    <label htmlFor="titulo">Título</label>
-                    <input value={title} onChange={handleTitleChange} className={styles.inputForm} type="text" placeholder='Título' />
-                    <label htmlFor="titulo">Descripción</label>
-                    <input value={description}  onChange={handleDescriptionChange} className={styles.inputForm} type="text" placeholder='Descripción' />
-                    <label htmlFor="titulo">Imágen (url)</label>
-                    <input value={imageUrl}  onChange={handleImageUrlChange} className={styles.inputForm} type="text" placeholder='Imágen (url)' />
+                    <TextInput label='Título' id='title' value={title} onChange={handleTitleChange} 
+                    className={styles.inputForm} type="text" placeholder='Título' />
+                    <TextInput label='Descripción' id='description' value={description}  
+                    onChange={handleDescriptionChange} className={styles.inputForm} type="text" 
+                    placeholder='Descripción' />
+                    <TextInput label='Imágen (url)' id='imageUrl' value={imageUrl}  
+                    onChange={handleImageUrlChange} className={styles.inputForm} type="text" 
+                    placeholder='Imágen (url)' />
                     <button type='submit' className={styles.btnAgregar}>Agregar Playlist</button>
                 </form>
             </div>
@@ -66,8 +70,8 @@ export default function CreatePlayList({setPlayLists, playLists} : CreatePlaylis
                 src={imageUrl?imageUrl:"https://lh3.googleusercontent.com/d/1Jjrtu51P19Wt7f8DNh2yVPahVQvkX5-_"} 
                 alt="vistaPrevia" 
                 />
-                <h2 className={styles.tituloVistaPrevia}>{title?title:'Título'}</h2>
-                <h3 className={styles.descripcionVistaPrevia}>{description?description:'Descripción'}</h3>
+                <Heading as={'h2'} className={styles.tituloVistaPrevia}>{title?title:'Título'}</Heading>
+                <Heading as={'h3'} className={styles.descripcionVistaPrevia}>{description?description:'Descripción'}</Heading>
             </div>
         </div>
     );

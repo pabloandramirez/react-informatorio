@@ -4,6 +4,7 @@ import playBtn from '../assets/play-btn.svg';
 import { ComponentState, useRef} from 'react';
 import React from 'react';
 import { useAudio } from './hooks/useAudio';
+import Heading from './Heading';
 
 
 type AudioProps = {
@@ -96,8 +97,8 @@ export default function Cover({id, logoImage, title, description, styleType, hig
                 </a>
             </div>
             <div className={styleType === 'similar' ? cover.textSimilar : cover.text}>
-                <h3 title={title} className={styleType==='playlist' ||styleType==='recommended' ? cover.titlePlaylist : cover.titleSong}>{shortTitle}</h3>
-                <h3 title={description} className={styleType==='playlist' ||styleType==='recommended' ? cover.artistPlaylist : cover.artistSong}>{shortDescription}</h3>
+                <Heading title={title} className={styleType==='playlist' ||styleType==='recommended' ? cover.titlePlaylist : cover.titleSong} as={'h3'}>{shortTitle}</Heading>
+                <Heading title={description} className={styleType==='playlist' ||styleType==='recommended' ? cover.artistPlaylist : cover.artistSong} as={'h3'}>{shortDescription}</Heading>
             </div>
         </div>
     )

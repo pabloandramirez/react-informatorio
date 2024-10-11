@@ -1,5 +1,6 @@
 
 import cover from '../styles/cover.module.css';
+import Heading from './Heading';
 
 type PlaylistProps = {
     id: number;
@@ -47,8 +48,8 @@ export default function Playlist({id, logoImage, title, description, styleType }
                 <img className={coverImageStyle} src={logoImage} alt="song-cover"/> 
             </div>
             <div className={styleType === 'similar' ? cover.textSimilar : cover.text}>
-                <h3 title={title} className={styleType==='playlist' ||styleType==='recommended' ? cover.titlePlaylist : cover.titleSong}>{shortTitle}</h3>
-                <h3 title={description} className={styleType==='playlist' ||styleType==='recommended' ? cover.artistPlaylist : cover.artistSong}>{shortDescription}</h3>
+                <Heading as={'h3'} title={title} className={styleType==='playlist' ||styleType==='recommended' ? cover.titlePlaylist : cover.titleSong}>{shortTitle}</Heading>
+                <Heading as={'h1'} title={description} className={styleType==='playlist' ||styleType==='recommended' ? cover.artistPlaylist : cover.artistSong}>{shortDescription}</Heading>
             </div>
         </div>
     )
