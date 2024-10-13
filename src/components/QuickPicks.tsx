@@ -10,27 +10,19 @@ type AudiosProps = {
 
 type AudioProps = {
     id: string;
-    channel: Channel;
+    channel: {
+        urls : {
+            logo_image : {
+                original: string;
+            };
+        };
+    };
     title: string;
     description: string;
-    urls: Urls;
+    urls: {
+        high_mp3 : string;
+    };
     duration: number;
-}
-
-type Urls = {
-    high_mp3 : string;
-}
-
-type Channel = {
-    urls : UrlsChannel;
-}
-
-type UrlsChannel = {
-    logo_image : LogoImage;
-}
-
-type LogoImage = {
-    original: string;
 }
 
 export default function QuickPicks({audios} : AudiosProps){

@@ -7,18 +7,83 @@ import volumeUp from '../assets/volume-up.svg';
 import arrowDropDown from '../assets/arrow-drop-down.svg';
 import pauseBtn from '../assets/pause-btn.svg';
 import logo from '../assets/youtube-music.svg';
-import { useContext } from 'react';
+import { ChangeEvent, useContext, useEffect, useRef } from 'react';
 import { PlayAudioContext } from './contexts/AudioContext';
 
 
 export default function PlayBar(){
-
     const audioContext = useContext(PlayAudioContext);
+    const minutosRef = useRef<HTMLParagraphElement | null>(null);
+    const segundosRef = useRef<HTMLParagraphElement | null>(null);
+    const rangeRef = useRef<HTMLInputElement | null>(null);
+
+    useEffect(() => {
+        if (audioContext?.activeAudio) {
+          const updateProgress = () => {
+            if(audioContext.activeAudio){
+            const currentAudioTime = audioContext.activeAudio.currentTime;
+            audioContext.setCurrentTime((currentAudioTime / duration) * 100);
+            if(minutesConverter(currentAudioTime)===minutesConverter(duration)
+              && secondsConverter(currentAudioTime) === secondsConverter(duration)){
+                audioContext.setIsPlaying(false);
+            }
+            if(minutosRef.current && segundosRef.current && rangeRef.current){
+                minutosRef.current.innerText = minutesConverter(currentAudioTime);
+                segundosRef.current.innerText = secondsConverter(currentAudioTime);
+                const value = (currentAudioTime / duration) * 100;
+                rangeRef.current.style.background = `linear-gradient(to right, #ff0000 ${value}%, #ddd ${value}%)`;
+            }
+          }};
+    
+          const handleLoadedMetadata = () => {
+            if (audioContext.activeAudio) {
+              const duration = audioContext.activeAudio.duration;
+              audioContext.setDuration(duration); 
+            }
+          };
+          audioContext.activeAudio.addEventListener('timeupdate', updateProgress);
+      
+          audioContext.activeAudio.addEventListener('loadedmetadata', handleLoadedMetadata);
+      
+          return () => {
+            if (audioContext.activeAudio) {
+              audioContext.activeAudio.removeEventListener('timeupdate', updateProgress);
+              audioContext.activeAudio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+            }
+          };
+        }
+      }, [audioContext?.activeAudio, audioContext?.isPlaying, audioContext?.duration, audioContext]);
+
 
     const handlClickPlay = (e: React.MouseEvent<HTMLAnchorElement>)=>{
         e.preventDefault();
         audioContext?.setIsPlaying(!audioContext?.isPlaying);
-        audioContext?.activeAudio?.paused ? audioContext?.activeAudio?.play() : audioContext?.activeAudio?.pause() ;
+        audioContext?.activeAudio?.paused ? audioContext?.activeAudio?.play() : 
+        audioContext?.activeAudio?.pause() ;
+    }
+
+    // const value = 
+
+    const handleAudioBar = (e: ChangeEvent<HTMLInputElement>) => {
+
+        const newTime = (Number(e.target.value) / 100) * duration; 
+        if (audioContext?.activeAudio) {
+            audioContext.activeAudio.currentTime = newTime; 
+        }
+        audioContext?.setCurrentTime(newTime);
+    
+    }
+
+    function minutesConverter(minutes: number){
+        const correctMinutes = parseInt(Math.trunc(minutes / 60).toFixed(0))+'';
+        return correctMinutes;
+    }
+
+    function secondsConverter(minutes: number){
+        const correctSeconds = Math.trunc(minutes % 60) < 10 
+        ? '0' + Math.trunc(minutes % 60) 
+        : Math.trunc(minutes % 60) + '';
+        return correctSeconds;
     }
 
     const currentAudioInfo = audioContext?.audioInfo;
@@ -27,16 +92,16 @@ export default function PlayBar(){
     const description = currentAudioInfo?.description;
     const duration = currentAudioInfo?.duration ?? 0;
     
-    const minutes = currentAudioInfo?.duration ? parseInt((currentAudioInfo?.duration/60).toFixed(0)) : 0;
-    const seconds = Math.trunc(duration % 60) < 10 
-    ? '0' + Math.trunc(duration % 60) 
-    : Math.trunc(duration % 60) + '';
+    const minutes = currentAudioInfo?.duration ? minutesConverter(currentAudioInfo?.duration) : '00';
+    const seconds = currentAudioInfo?.duration ? secondsConverter(currentAudioInfo?.duration) : '00';
 
     const shortTitle = title && title.slice(0, 20)+'...';
     const shortDescription = description && description.slice(0, 30)+'...';
 
     return(
         <footer className={styles.playBar}>
+            <input ref={rangeRef} type="range" className={styles.reproductionSlide} min="0" max="100" id="slider" 
+            value={audioContext?.currentTime} onChange={(event) => {handleAudioBar(event);}} />
             <div className={styles.reproductionBtns}>
                 <a href="#">
                     <img src={skipPrevious} alt="skip_previous" />
@@ -47,7 +112,8 @@ export default function PlayBar(){
                 <a href="#">
                     <img src={skipNext} alt="skip_next" />
                 </a>
-                <p className={styles.reproductionTime}>0:00 / {minutes}:{seconds}</p>
+                <div className={styles.reproductionTime}><p ref={minutosRef}>00</p>:<p ref={segundosRef}>00</p> 
+                / {minutes}:{seconds}</div>
             </div>
             <div className={styles.songPlaying}>
                 <img className={styles.songCover} src={image_logo?image_logo:logo} alt="song_image" />

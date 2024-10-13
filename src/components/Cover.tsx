@@ -70,7 +70,6 @@ export default function Cover({id, logo_image, title, description, styleType, hi
         } else {
             currentAudio?.pause();
             audioContext?.setIsPlaying(false);
-            audioContext?.setActiveAudio(null);
         }
     };
 
