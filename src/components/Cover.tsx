@@ -5,6 +5,7 @@ import { useContext, useRef} from 'react';
 import React from 'react';
 import Heading from './Heading';
 import { PlayAudioContext } from './contexts/AudioContext';
+import { PlayBarShowContext } from './contexts/PlayBarContext';
 
 
 type AudioProps = {
@@ -47,6 +48,8 @@ export default function Cover({id, logo_image, title, description, styleType, hi
     const coverImageStyle: string = styleImageMap[styleType] || cover.imageSong;
     const shortTitle = title.slice(0,45)+'...';
     const shortDescription = description && description.slice(0, 50)+'...';
+
+    const playBarContext = useContext(PlayBarShowContext);
     const audioContext = useContext(PlayAudioContext);
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -67,6 +70,7 @@ export default function Cover({id, logo_image, title, description, styleType, hi
             currentAudio.play();
             audioContext?.setIsPlaying(true);
             audioContext?.setActiveAudio(currentAudio);
+            playBarContext?.setShowPlaybar(true);
         } else {
             currentAudio?.pause();
             audioContext?.setIsPlaying(false);

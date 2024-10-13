@@ -2,17 +2,17 @@ import styles from '../styles/playbar.module.css';
 import skipPrevious from '../assets/skip_previuos.svg';
 import playArrow from '../assets/play_arrow.svg';
 import skipNext from '../assets/skip_next.svg';
-import repeatSong from '../assets/repeat-song.svg';
-import volumeUp from '../assets/volume-up.svg';
-import arrowDropDown from '../assets/arrow-drop-down.svg';
+import closePlayBar from '../assets/close-playbar.svg';
 import pauseBtn from '../assets/pause-btn.svg';
 import logo from '../assets/youtube-music.svg';
 import { ChangeEvent, useContext, useEffect, useRef } from 'react';
 import { PlayAudioContext } from './contexts/AudioContext';
+import { PlayBarShowContext } from './contexts/PlayBarContext';
 
 
 export default function PlayBar(){
     const audioContext = useContext(PlayAudioContext);
+    const playBarContext = useContext(PlayBarShowContext);
     const minutosRef = useRef<HTMLParagraphElement | null>(null);
     const segundosRef = useRef<HTMLParagraphElement | null>(null);
     const rangeRef = useRef<HTMLInputElement | null>(null);
@@ -74,6 +74,12 @@ export default function PlayBar(){
     
     }
 
+    const handleCloseClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        playBarContext?.setShowPlaybar(false);
+        audioContext?.activeAudio?.pause();
+    }
+
     function minutesConverter(minutes: number){
         const correctMinutes = parseInt(Math.trunc(minutes / 60).toFixed(0))+'';
         return correctMinutes;
@@ -125,14 +131,8 @@ export default function PlayBar(){
                 </div>
             </div>
             <div className={styles.playOptions}>
-                <a href="#">
-                    <img src={repeatSong} alt="repeat_song" />
-                </a>
-                <a href="#">
-                    <img src={volumeUp} alt="volume_up" />
-                </a>
-                <a href="#">
-                    <img src={arrowDropDown} alt="arrow_drop_down" />
+                <a href="#" onClick={handleCloseClick}>
+                    <img src={closePlayBar} alt="close_playbar" />
                 </a>
             </div>
         </footer>
