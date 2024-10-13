@@ -2,12 +2,10 @@ import CategoryTitle from "./CategoryTitle";
 import NavegationArrows from "./NavegationArrows";
 import styles from '../styles/listenAgain.module.css';
 import Cover from "./Cover";
-import { ComponentState } from "react";
 
 
 type AudiosProps = {
     audios: Array<AudioProps>;
-    delegated: ComponentState;
 }
 
 type AudioProps = {
@@ -35,7 +33,7 @@ type LogoImage = {
     original: string;
 }
 
-export default function ListenAgain( {audios, delegated} : AudiosProps){
+export default function ListenAgain( {audios} : AudiosProps){
 
     return(
         <div className={styles.listenAgainSection}>
@@ -46,8 +44,8 @@ export default function ListenAgain( {audios, delegated} : AudiosProps){
             <div className={styles.generalSection}>
                 {audios.slice(0,10).map((audio: AudioProps) => {
                     return(
-                        <Cover key={audio.id} delegated={delegated} logoImage={audio.channel.urls.logo_image.original} title={audio.title}
-                        description={audio.description} styleType={'playlist'} highMp3={audio.urls.high_mp3} id={audio.id} duration={audio.duration}/>
+                        <Cover key={audio.id} logo_image={audio.channel.urls.logo_image.original} title={audio.title}
+                        description={audio.description} styleType={'playlist'} high_mp3={audio.urls.high_mp3} id={audio.id} duration={audio.duration}/>
                     )
                 })}
             </div>

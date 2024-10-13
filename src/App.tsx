@@ -1,11 +1,11 @@
-import { ComponentState, useState } from 'react';
+import { ComponentState, useContext, useState } from 'react';
 import stylesApp from './App.module.css';
 import AsideBar from './components/AsideBar';
 import Header from './components/Header';
 import Home from './components/Home';
 import PlayBar from './components/PlayBar';
 import CreatePlayList from './components/CreatePlayList';
-import { AudioProvider } from './components/hooks/useAudio';
+import { PlayAudioContext, PlayAudioProvider } from './components/contexts/AudioContext';
 
 function App() {
 
@@ -13,26 +13,30 @@ function App() {
 
   const [showHome, setShowHome] = useState(true);
   const [playLists, setPlayLists] = useState<Array<Playlist>>([]);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [audioLength, setAudioLength] = useState(0);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [imageLogo, setImageLogo] = useState('');
-  const minutes = parseInt((audioLength/60).toFixed(0));
-  const seconds = Math.trunc(audioLength%60);
+
+  const currentAudioContext = useContext(PlayAudioContext);
+  // const currentAudioInfo = currentAudioContext?.audioInfo;
+  // console.log(currentAudioInfo);
+  // const image_logo = currentAudioInfo?.logo_image;
+  // const title = currentAudioInfo?.title;
+  // const description = currentAudioInfo?.description;
+  // const duration = currentAudioInfo?.duration ?? 0;
+  
+  // const minutes = currentAudioInfo?.duration ? parseInt((currentAudioInfo?.duration/60).toFixed(0)) : 0;
+  // const seconds = Math.trunc(duration % 60) < 10 
+  // ? '0' + Math.trunc(duration % 60) 
+  // : Math.trunc(duration % 60) + '';
 
   return (
     <>
       <Header />
-      <AudioProvider>
+      <PlayAudioProvider>
         <div className={stylesApp.mainContent}>
           <AsideBar playLists={playLists} setShowHome={setShowHome}/>
-          {showHome ? <Home setIsPlaying={setIsPlaying} setAudioLength={setAudioLength} setTitle={setTitle} 
-          setDescription={setDescription} setImageLogo={setImageLogo}/> : <CreatePlayList playLists={playLists} setPlayLists={setPlayLists}/>}
+          {showHome ? <Home /> : <CreatePlayList playLists={playLists} setPlayLists={setPlayLists}/>}
         </div>
-        <PlayBar isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioMinutes={minutes} audioSeconds={seconds}
-        title={title} description={description} imageLogo={imageLogo} />
-       </AudioProvider>
+        <PlayBar />
+       </PlayAudioProvider>
     </>
   )
 }

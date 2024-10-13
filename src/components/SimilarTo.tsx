@@ -1,4 +1,3 @@
-import { ComponentState } from 'react';
 import styles from '../styles/recommendedAlbums.module.css';
 import CategoryTitle from './CategoryTitle';
 import Cover from './Cover';
@@ -7,7 +6,6 @@ import NavegationArrows from './NavegationArrows';
 
 type AudiosProps = {
     audios: Array<AudioProps>;
-    delegated: ComponentState;
 }
 
 type AudioProps = {
@@ -17,6 +15,7 @@ type AudioProps = {
     description: string;
     urls: Urls;
     category_id: number;
+    duration: number;
 }
 
 type Urls = {
@@ -35,7 +34,7 @@ type LogoImage = {
     original: string;
 }
 
-export default function SimilarTo({audios, delegated} : AudiosProps){
+export default function SimilarTo({audios} : AudiosProps){
 
     return(
         <div className={styles.recommendedSection}>
@@ -46,9 +45,9 @@ export default function SimilarTo({audios, delegated} : AudiosProps){
             <div className={styles.generalSection}>
                 {audios.slice(0,5).map((audio: AudioProps) => {
                     return(
-                        <Cover key={audio.id} logoImage={audio.channel.urls.logo_image.original} 
+                        <Cover key={audio.id} logo_image={audio.channel.urls.logo_image.original} 
                         title={audio.title} description={audio.description} styleType={'similar'} 
-                        highMp3={audio.urls.high_mp3} id={audio.id} delegated={delegated} duration={0}/>
+                        high_mp3={audio.urls.high_mp3} id={audio.id} duration={audio.duration}/>
                     )
                 })}
             </div>
