@@ -1,6 +1,6 @@
 import cover from '../styles/cover.module.css';
-import moreVertical from '../assets/more-vertical.svg';
-import playBtn from '../assets/play-btn.svg';
+import moreVertical from '/more-vertical.svg';
+import playBtn from '/play-btn.svg';
 import { useContext, useRef} from 'react';
 import React from 'react';
 import Heading from './Heading';

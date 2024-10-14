@@ -1,10 +1,10 @@
 import styles from '../styles/playbar.module.css';
-import skipPrevious from '../assets/skip_previuos.svg';
-import playArrow from '../assets/play_arrow.svg';
-import skipNext from '../assets/skip_next.svg';
-import closePlayBar from '../assets/close-playbar.svg';
-import pauseBtn from '../assets/pause-btn.svg';
-import logo from '../assets/youtube-music.svg';
+import skipPrevious from '/skip_previuos.svg';
+import playArrow from '/play_arrow.svg';
+import skipNext from '/skip_next.svg';
+import closePlayBar from '/close-playbar.svg';
+import pauseBtn from '/pause-btn.svg';
+import logo from '/youtube-music.svg';
 import { ChangeEvent, useContext, useEffect, useRef } from 'react';
 import { PlayAudioContext } from './contexts/AudioContext';
 import { PlayBarShowContext } from './contexts/PlayBarContext';

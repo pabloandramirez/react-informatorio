@@ -1,4 +1,4 @@
-import logoBusqueda from '../assets/search.svg';
+import logoBusqueda from '/search.svg';
 import styles from '../styles/searchbar.module.css';
 import TextInput from './TextInput';
 

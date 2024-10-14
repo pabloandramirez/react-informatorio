@@ -1,5 +1,5 @@
 import { Dispatch, useState } from 'react';
-import PeopleIcon from '../assets/people.svg';
+import PeopleIcon from '/people.svg';
 import styles from '../styles/asideBar.module.css';
 import Playlist from './PlayList';
 
