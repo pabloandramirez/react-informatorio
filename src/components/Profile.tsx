@@ -1,4 +1,4 @@
-import profile from '../assets/profile.jpg';
+import profile from '/profile.jpg';
 import styles from '../styles/profile.module.css';
 
 

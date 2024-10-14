@@ -1,13 +1,8 @@
 /*Playlist Covers*/
 
-.playlist{
-
-}
-
 .imageContainerPlaylist{
     display: grid;
     position: relative;
-    justify-items: end;
 }
 
 .moreVertical{
@@ -15,12 +10,14 @@
     height: 18px;
     position: absolute;
     margin: 5px 5px auto auto;
+    justify-self: end;
 }
 
 .playBtn{
     position: absolute;
     margin: auto 5px 5px auto;
     align-self: end;
+    justify-self: end;
 }
 
 .imagePlaylist{

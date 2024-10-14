@@ -1,5 +1,5 @@
-import leftArrow from '../assets/left-arrow.svg';
-import rightArrow from '../assets/right-arrow.svg';
+import leftArrow from '/left-arrow.svg';
+import rightArrow from '/right-arrow.svg';
 import styles from '../styles/navegationArrows.module.css';
 
 export default function NavegationArrows(){

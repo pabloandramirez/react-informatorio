@@ -18,6 +18,7 @@ a {
   padding: 0;
   border: none;
   text-decoration: none;
+  line-height: 0;
 }
 
 a:hover {

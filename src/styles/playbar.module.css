@@ -1,3 +1,52 @@
+.reproductionSlide{
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    margin: 0;
+    background-color: #ddd;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+
+.reproductionSlide::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #ff0000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.reproductionSlide::-moz-range-thumb {
+    width: 20px; 
+    height: 20px; 
+    background: #3498db;
+    border-radius: 50%;
+    cursor: pointer; 
+}
+
+.reproductionSlide::-ms-thumb {
+    width: 20px;
+    height: 20px; 
+    background: #fff; 
+    border-radius: 50%; 
+    cursor: pointer;
+  }
+  
+
+
+.reproductionTime{
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
 .playBar{
     display: flex;
     justify-content: space-between;
@@ -23,6 +72,7 @@
 .songCover{
     width: 48px;
     height: 48px;
+    margin-right: 20px;
 }
 
 .songContainer{
